@@ -1,38 +1,291 @@
-.App {
-  text-align: center;
+:root {
+  --color1: #fbc6d0;
+  --color2: #f9ac59;
+  --color3: #fb4c1f;
+  --color4: #95bddc;
+  --color1l: #f98365;
+  --color2l: #f9de59;
+  --color3l: #f89554;
+  --color4l: #c2d1e5;
+  --color5: rgb(71, 15, 15);
+  --color6: rgb(95, 95, 95);
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+hr {
+  position: relative;
+  align-self: center;
+  z-index: 10;
+  border: 2px solid var(--color2);
+  background: var(--color3);
+  width: 80%;
+  margin: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+@keyframes shift {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    width: 400px;
+    height: 400px;
+  }
+}
+@-webkit-keyframes shift {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    width: 400px;
+    height: 400px;
+  }
+}
+@-moz-keyframes shift {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    width: 400px;
+    height: 400px;
+  }
+}
+@-o-keyframes shift {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    width: 400px;
+    height: 400px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@keyframes shiftArm {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    height: 20px;
+  }
+}
+
+@-moz-keyframes shiftArm {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    height: 20px;
+  }
+}
+@-webkit-keyframes shiftArm {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    height: 20px;
+  }
+}
+
+@-o-keyframes shiftArm {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    height: 20px;
+  }
+}
+@keyframes zoomOutQuarters {
+  0% {
+    width: 250px;
+    height: 250px;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+  }
+}
+@-moz-keyframes zoomOutQuarters {
+  0% {
+    width: 250px;
+    height: 250px;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+  }
+}
+@-webkit-keyframes zoomOutQuarters {
+  0% {
+    width: 250px;
+    height: 250px;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+  }
+}
+@-o-keyframes zoomOutQuarters {
+  0% {
+    width: 250px;
+    height: 250px;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+#landingpage {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  height: 90vh;
   align-items: center;
+}
+
+#pulltonav {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  height: 10vh;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: var(--color5);
 }
 
-.App-link {
-  color: #61dafb;
+#pulltonav:hover {
+  cursor: pointer;
+  filter: opacity(0.8);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#greeting {
+  padding-left: 100px;
+  width: 50vw;
+  opacity: 0%;
+  transition: opacity 1s ease 0.4s;
+}
+
+#greeting h1 {
+  font-size: 100px;
+  margin-block-start: 0;
+  margin-bottom: 40px;
+}
+#greeting p {
+  font-size: 30px;
+  margin-block-start: 0;
+  margin-bottom: 40px;
+}
+
+#greeting.selected {
+  opacity: 100%;
+}
+
+#spinarm {
+  height: 180px;
+  width: 20px;
+  background-color: var(--color6);
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  bottom: 80%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 20px;
+}
+
+#spinarm.selected {
+  animation: shiftArm 1s ease forwards;
+  -o-animation: shiftArm 1s ease forwards;
+  -moz-animation: shiftArm 1s ease forwards;
+  -webkit-animation: shiftArm 1s ease forwards;
+}
+
+#wheel {
+  padding: 0;
+  width: 500px;
+  height: 500px;
+  border: 1px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transition: transform 1s;
+}
+
+#wheel.changetonav {
+  overflow: visible;
+
+  transition: all 1s;
+}
+
+#wheel.selected {
+  animation: shift 1s ease forwards;
+  -o-animation: shift 1s ease forwards;
+  -moz-animation: shift 1s ease forwards;
+  -webkit-animation: shift 1s ease forwards;
+}
+
+.selected .quarter {
+  animation: zoomOutQuarters 1s ease forwards;
+  -o-animation: zoomOutQuarters 1s ease forwards;
+  -moz-animation: zoomOutQuarters 1s ease forwards;
+  -webkit-animation: zoomOutQuarters 1s ease forwards;
+}
+
+.quarter {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  height: 250px;
+}
+
+.quarter:hover {
+  cursor: pointer;
+}
+
+#q1 {
+  background-color: var(--color1);
+}
+
+#q2 {
+  background-color: var(--color2);
+}
+#q3 {
+  background-color: var(--color3);
+}
+
+#q4 {
+  background-color: var(--color4);
+}
+
+.projectcard {
+  padding: 200px;
+}
+
+.projectcardtitle {
+  text-align: center;
+  font-size: 70px;
+}
+
+.projectcardbody {
+  height: 100vh;
+  padding: 0 50px;
 }
